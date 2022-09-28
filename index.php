@@ -35,94 +35,43 @@
         <h1 style="text-align: center; font-family: Lucida Handwriting; margin-top: 10px; ">New Arrivals</h1>
 
     </div>
-
     <div class="container">
-        <div class="row">
+            <div class="row">
+                
+                <?php
 
+include 'config.php';
 
+        $sql = "select * from products";
+        $result = mysqli_query($con,$sql);
+        
+        if(mysqli_num_rows($result)> 0){
 
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/ddede68bf7c299a9e5595e66ee3834e1/6/0/6004780101_1_1.jpg"
-                        class="card-img-top" alt="...">
+            while($row = mysqli_fetch_assoc($result)){
+    
+                ?>
+        <div class="col-md-4 mt-5">
+                <div class="card" >
+                    <img src="<?php echo "images/".$row['pthumbnail']?>"
+                        class="card-img-top" alt="..." height="250px">
                     <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Paris Card Case</h5>
+                        <h5 class="card-title" style="text-align: center;"><?php echo $row['pname']?></h5>
+                        <h5 class="card-desc" style="text-align: center;"><?php echo $row['pdesc']?></h5>
                         <p class="card-text" style="text-align: center;">Price : 1,100</p>
                         <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
                     </div>
                 </div>
             </div>
 
+<?php
+            }
+            
+        }
+    ?>
 
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/ddede68bf7c299a9e5595e66ee3834e1/4/1/4176_maroon_1_1.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Birch (Small)</h5>
-                        <p class="card-text" style="text-align: center;">Price : 4,765</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/ddede68bf7c299a9e5595e66ee3834e1/4/1/4177_maroon_1_1.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Birch (Large)</h5>
-                        <p class="card-text" style="text-align: center;">Price : 5,870</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
-                </div>
-            </div>
 
         </div>
-
-
-        <div class="row">
-
-
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/2c0a61623346367819c0a988bc868af9/4/1/4171-24_1_1_1.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Lotus Bag</h5>
-                        <p class="card-text" style="text-align: center;">Price : 6,170</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/2c0a61623346367819c0a988bc868af9/4/1/4174_black_1_2.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Acacia Bag</h5>
-                        <p class="card-text" style="text-align: center;">Price : 8,100</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://jafferjees.com/pub/media/catalog/product/cache/2c0a61623346367819c0a988bc868af9/4/1/4179_white_1_1.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Willow Bag</h5>
-                        <p class="card-text" style="text-align: center;">Price : 10,100</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
     </div>
 
 

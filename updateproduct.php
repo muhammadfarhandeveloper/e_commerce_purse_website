@@ -31,7 +31,8 @@
 <input type="text" required value="<?php echo $row['pname']?>" name="ptitle"  class="form-control"/><br>
 <textarea name="pdesc"   rows="5" class="form-control" ><?php echo $row['pdesc']?></textarea>
 <img src="images/<?php echo $row['pthumbnail']?>" width="100px"/><br/><br/>
-<input type="file" name="imgthum" required /> <br><br>
+<input type="hidden" name="thumbimg" value="<?php echo $row['pthumbnail']?>">
+<input type="file" name="imgthum"  /> <br><br>
 <select name="catergory" id="">
 
     <?php
@@ -84,7 +85,7 @@ else{
 
 ?>
 <br><br>
-        <button type="submit" name="updateproduct" class="btn btn-primary">Update Product</button>
+        <button type="update" name="updateproduct" class="btn btn-primary">Update Product</button>
 
 </form>
             </div>
@@ -93,6 +94,42 @@ else{
   
 
     <br><br><br>
+
+    <?php
+
+        if(isset($_POST['updateproduct'])){
+
+            $ptitle = $_POST['ptitle'];
+            $pdesc = $_POST['pdesc'];
+            $thumbimg = $_POST['thumbimg'];
+            $catvalue = $_POST['catergory'];
+            $colorvalue = $_POST['color'];
+
+            if(is_uploaded_file($_FILES['imgthum']['tmp_name'])){
+                $filname = $_FILES['imgthum']['name'];
+                $tmpname = $_FILES['imgthum']['tmp_name'];
+                unlink("images/".$thumbimg);
+                move_uploaded_file($tmpname,"images/".$filname);
+                $sql = "UPDATE products SET pname='{$ptitle}',pdesc='{$pdesc}',pthumbnail='{$filname}',catid={$catvalue},colorid={$colorvalue} where pid = $pid";
+
+            }
+            else{
+                $sql = "UPDATE products SET pname='{$ptitle}',pdesc='{$pdesc}',pthumbnail='{$thumbimg}',catid={$catvalue},colorid={$colorvalue} where pid = $pid";
+            }
+
+            $result2 = mysqli_query($con,$sql);
+            if($result2){
+                echo "<script>alert('product Details Update !')
+                window.location.href = 'allproduct.php';
+                </script>";
+            }
+
+
+        }
+    
+    
+    ?>
+
     
 </body>
 </html>
