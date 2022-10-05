@@ -42,7 +42,7 @@
 
 include 'config.php';
 
-        $sql = "select * from products";
+        $sql = "select * from products inner join product_price on products.pid = product_price.pid";
         $result = mysqli_query($con,$sql);
         
         if(mysqli_num_rows($result)> 0){
@@ -56,10 +56,12 @@ include 'config.php';
                         class="card-img-top" alt="..." height="250px">
                     <div class="card-body">
                         <h5 class="card-title" style="text-align: center;"><?php echo $row['pname']?></h5>
-                        <h5 class="card-desc" style="text-align: center;"><?php echo $row['pdesc']?></h5>
-                        <p class="card-text" style="text-align: center;">Price : 1,100</p>
-                        <center> <a href="#" class="btn btn-outline-secondary">Add to cart</a></center>
-                    </div>
+                        <p class="card-text" style="text-align: center;"><?php echo $row['product_price']?> PKR</p>
+                        <center>
+                            <a href="#" class="btn btn-outline-secondary">Add to cart</a>
+                            <a href="productinfo.php?pid=<?php echo $row['pid']?>" class="btn btn-outline-secondary" >Review </a>
+                        </center> 
+                     </div>
                 </div>
             </div>
 
@@ -68,6 +70,7 @@ include 'config.php';
             
         }
     ?>
+
 
 
 
@@ -99,7 +102,9 @@ include 'config.php';
 
     </div>
 
+<!-- Button trigger modal -->
 
+<!-- Modal -->
 
 
 

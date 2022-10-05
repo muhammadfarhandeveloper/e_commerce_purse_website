@@ -40,7 +40,8 @@ if(!isset($_SESSION['username'])){
             <li class="list-item"><a href="category.php" class="text-decoration-none">Add Category</a></li>
             <li class="list-item"><a href="color.php" class="text-decoration-none">Add Color</a></li>
             <li class="list-item"><a href="" class="text-decoration-none">Add Size</a></li>
-            <li class="list-item"><a href="" class="text-decoration-none">Orders</a></li>
+            <li class="list-item"><a href="order.php" class="text-decoration-none">Orders</a></li>
+            <li class="list-item"><a href="orderdetails.php" class="text-decoration-none">Orders Details</a></li>
         </ul>
         
     </div>

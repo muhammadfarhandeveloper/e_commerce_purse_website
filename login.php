@@ -53,7 +53,7 @@ if(isset($_SESSION['username'])){
 
             $_SESSION['username'] = $user;
 
-            header("Location: http://localhost/purse_wallet_web/dashboard.php");
+            header("Location: http://localhost/purse_wallet_web/allproduct.php");
 
            }
            else{
